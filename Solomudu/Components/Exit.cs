@@ -310,20 +310,8 @@ namespace Solomudu.Components
 
                     if (destination == null)
                     {
-                        destination = new Entity
-                        {
-                            HumanName = "Location"
-                        };
-
-                        var room = new Location
-                        {
-                            Description = "An empty room.",
-                            Name = "Empty Room",
-                            Entity = destination
-                        };
-
-                        s.Save(destination);
-                        s.Save(room);
+                        var newloc = Location.CreateLocation(s, "An empty room", "Empty Room");
+                        destination = newloc.Entity;
                     }
 
                     x = new Exit

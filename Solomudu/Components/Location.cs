@@ -13,6 +13,32 @@ namespace Solomudu.Components
         public virtual String Name { get; set; }
         public virtual String Description { get; set; }
 
+        public static Location CreateLocation(ISession s, string name, string desc)
+        {
+            var ent = new Entity
+            {
+                HumanName = "Location:" + name
+            };
+
+            var loc = new Location
+            {
+                Name = name,
+                Description = desc,
+                Entity = ent
+            };
+
+            var inv = new Inventory
+            {
+                Entity = ent
+            };
+
+            s.Save(ent);
+            s.Save(loc);
+            s.Save(inv);
+
+            return loc;
+
+        }
 
         public virtual IEnumerable<T> Contents<T>(ISession s) where T : Component
         {

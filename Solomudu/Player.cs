@@ -69,6 +69,17 @@ namespace Solomudu
                     if (o != physical)
                         sb.AppendFormat("{0}\r\n", o.Name);
                 }
+
+                foreach (var i in physical
+                    .Location
+                    .Entity
+                    .GetFirstComponent<Components.Inventory>(session)
+                    .GetContents(session))
+                {
+                    sb.AppendLine(i.ShortName);
+                }
+
+
                 sb.Append("\r\n");
                 brain.Write(sb.ToString());
             }

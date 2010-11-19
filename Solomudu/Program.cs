@@ -55,57 +55,11 @@ namespace Solomudu
                 {
                     using (var tx = session.BeginTransaction())
                     {
-
-                        var startingRoomEntity = new Entity
-                        {
-                            HumanName = "StartingRoomEntity"
-                        };
-
-                        startingRoom = new Components.Location
-                        {
-                            Name = "The Void",
-                            Description = "You float in the void.",
-                            Entity = startingRoomEntity
-                        };
-
-                        var secondRoomEntity = new Entity {
-                            HumanName = "SecondRoomEntity"
-                        };
+                        startingRoom = Components.Location
+                            .CreateLocation(session, "The Void", "You float in the void.");
                         
-                        var secondRoom = new Components.Location {
-                            Name = "Second Room",
-                            Description = "You are in the second room.",
-                            Entity = secondRoomEntity
-                        };
+                        
 
-                        var x = new Components.Exit
-                        {
-                            Entity = startingRoomEntity,
-                            Dir = Components.Exit.Direction.North,
-                            Destination = secondRoomEntity,
-                            Name = ""
-                        };
-
-                        var statueE = new Entity
-                        {
-                            HumanName = "Statue"
-                        };
-                        var statue = new Components.Physical
-                        {
-                            Entity = statueE,
-                            Name = "A Statue.",
-                            Location = startingRoom,
-                        };
-
-
-
-                        session.Save(startingRoomEntity);
-                        session.Save(startingRoom);
-                        session.Save(secondRoomEntity);
-                        session.Save(secondRoom);
-                        session.Save(x);
-                        session.Save(statueE);
-                        session.Save(statue);
                         tx.Commit();
                     }
                 }

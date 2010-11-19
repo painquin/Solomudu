@@ -29,6 +29,10 @@ namespace Solomudu
                 Entity = e,
                 Location = Program.startingRoom
             };
+            var i = new Components.Inventory
+            {
+                Entity = e
+            };
             
             Console.WriteLine("Adding player {0}", line);
 
@@ -40,6 +44,7 @@ namespace Solomudu
                         session.Save(e);
                         session.Save(ph);
                         session.Save(l);
+                        session.Save(i);
                         tx.Commit();
                     }
             }

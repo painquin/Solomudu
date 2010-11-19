@@ -92,6 +92,8 @@
     <Compile Include="Command.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Components\Exit.cs" />
+    <Compile Include="Components\Inventory.cs" />
+    <Compile Include="Components\Item.cs" />
     <Compile Include="Components\Listen.cs" />
     <Compile Include="Components\Location.cs" />
     <Compile Include="Components\Physical.cs" />
